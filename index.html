@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <script src="js/script.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/paynowqr@1.1.2/dist/paynowqr.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>BPC.org.sg PayNow Site</title>
+</head>
+<body>
+    <header class="p-4 mb-10" style="background-color: #2e1a46;">
+        <div class="max-w-5xl m-auto">
+            <div class="text-xl.font-bold text-white">BPC PayNow QR</div>
+        </div>
+    </header>
+    <main>
+        <div class="flex flex-col-reverse align-center justify-center p-10 m-auto md:max-w-4xl md:flex-row">
+            <div class="w-full md:w-2/3 mr-24">
+                <h1 class="text-3xl font-bold mb-5 md:text-4xl">PayNow</h1>
+                <p class="mb-4">
+                    Please fill in the options for your offering.
+                </p>
+                <form id="generate-form" class="mt-4">
+                    <input type="number" placeholder="Enter amount" class="w-full border-2 border-grey-200 rounded p-3 text-grey-dark mr-2 focus:outline-none mb-5">
+                    <p>Please select the service attending:</p>
+                        <input type="radio" id="ch" name="svc" value="Ch">
+                        <label for="ch">Chinese</label><br>
+                        <input type="radio" id="ym" name="svc" value="Ym">
+                        <label for="ym">Youth Ministry</label><br>
+                        <input type="radio" id="hk" name="svc" value="Hk">
+                        <label for="hk">Hokkien</label>
+                </form>
+            </div>
+            <div class="w-full md:w-1/3 self-center">
+                <img src="bpc_logo.png" alt="" class="mb-10"/>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
