@@ -20,7 +20,6 @@ const onGenerateSubmit = (e) => {
         uen:'T12SS0103L',           //Required: UEN of company
         amount : sum,               //Specify amount of money to pay.
         editable: false,             //Whether or not to allow editing of payment amount. Defaults to false if amount is specified
-        expiry: '20251231',         //Set an expiry date for the Paynow QR code (YYYYMMDD). If omitted, defaults to 5 years from current time.
         refNumber: reference,   //Reference number for Paynow Transaction. Useful if you need to track payments for recouncilation.              
       });
     
@@ -30,7 +29,7 @@ const onGenerateSubmit = (e) => {
         setTimeout(() => {
             const saveUrl = qr.querySelector('img').src;
             createSaveBtn(saveUrl);
-        }, 50);
+        }, 1000);
     }, 50);
 
 }
@@ -46,16 +45,17 @@ const generateQRCode = (url) => {
 const createSaveBtn = (saveUrl) => {
     const link = document.createElement('a');
     link.id = 'save-link';
+    alert(saveUrl);
     link.classList = 'bg-red-500 hover:bg-red-700  text-white font-bold py-2 rounded w-1/3 m-auto my-5';
     link.href = saveUrl;
     link.download = 'qrcode';
     link.innerHTML = 'Save Image';
     document.getElementById('generated').appendChild(link);
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-    link.click();
-    document.getElementById('generated').removeChild(link);
-    }
+    //var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    //if (isMobile) {
+    //link.click();
+    //document.getElementById('generated').removeChild(link);
+    //}
 };
 
 const clearUI = () => {
