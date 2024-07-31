@@ -27,10 +27,10 @@ const onGenerateSubmit = (e) => {
     setTimeout(() => {
         generateQRCode(payNowString.output());
 
-        setTimeout(() => {
-            const saveUrl = qr.querySelector('img').src;
-            createSaveBtn(saveUrl);
-        }, 100);
+        //setTimeout(() => {
+        //    const saveUrl = qr.querySelector('img').src;
+        //    createSaveBtn(saveUrl);
+        //}, 100);
     }, 50);
 
 }
