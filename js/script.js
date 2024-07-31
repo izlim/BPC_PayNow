@@ -27,10 +27,10 @@ const onGenerateSubmit = (e) => {
     setTimeout(() => {
         generateQRCode(payNowString.output());
 
-        //setTimeout(() => {
-        //    const saveUrl = qr.querySelector('img').src;
-        //    createSaveBtn(saveUrl);
-        //}, 100);
+        setTimeout(() => {
+            const saveUrl = qr.querySelector('img').src;
+            createSaveBtn(saveUrl);
+        }, 50);
     }, 50);
 
 }
@@ -51,6 +51,11 @@ const createSaveBtn = (saveUrl) => {
     link.download = 'qrcode';
     link.innerHTML = 'Save Image';
     document.getElementById('generated').appendChild(link);
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+    link.click();
+    document.getElementById('generated').removeChild(link);
+    }
 };
 
 const clearUI = () => {
