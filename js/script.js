@@ -4,6 +4,8 @@ const qr = document.getElementById('qrcode');
 const onGenerateSubmit = (e) => {
     e.preventDefault();
 
+    clearUI();
+
     const name = document.getElementById('name').value;
     const offering = document.getElementById('offering').value;
     const missions = document.getElementById('missions').value;
@@ -24,9 +26,13 @@ const onGenerateSubmit = (e) => {
     
     setTimeout(() => {
         generateQRCode(payNowString.output());
+
+        setTimeout(() => {
+            const saveUrl = qr.querySelector('img').src;
+            createSaveBtn(saveUrl);
+        }, 50);
     }, 50);
 
-    //console.log(name, offering, missions, building, tithe, service, sum, reference);
 }
 
 const generateQRCode = (url) => {
@@ -35,7 +41,6 @@ const generateQRCode = (url) => {
         width: 300,
         height: 300,
     });
-    //console.log(url);
 }
 
 const createSaveBtn = (saveUrl) => {
@@ -47,5 +52,11 @@ const createSaveBtn = (saveUrl) => {
     link.innerHTML = 'Save Image';
     document.getElementById('generated').appendChild(link);
 };
+
+const clearUI = () => {
+    qr.innerHTML = '';
+    const saveBtn = document.getElementById('save-link');
+    if (saveBtn) saveBtn.remove();
+}
 
 form.addEventListener('submit', onGenerateSubmit);
