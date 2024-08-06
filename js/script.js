@@ -14,9 +14,10 @@ const onGenerateSubmit = (e) => {
     var radios = document.getElementsByName("svc");
     var service = Array.from(radios).find(radio => radio.checked).value;  
     const sum = (parseFloat(offering) + parseFloat(missions) + parseFloat(building) + parseFloat(tithe)).toFixed(2);
-    const reference = service + ' ' + name;
+    let reference = service + ' ' + name;
+
     if (offering > 0) {
-        reference = reference + ' o:' + offering;
+        reference += (' o:' + offering);
     }
     if (missions > 0) {
         reference = reference + ' m:' + missions;
