@@ -14,7 +14,19 @@ const onGenerateSubmit = (e) => {
     var radios = document.getElementsByName("svc");
     var service = Array.from(radios).find(radio => radio.checked).value;  
     const sum = (parseFloat(offering) + parseFloat(missions) + parseFloat(building) + parseFloat(tithe)).toFixed(2);
-    const reference = service + ' ' + name + ' ' + 'o:' + offering + 'm:' + missions + 'b:' + building + 't:' + tithe; 
+    const reference = service + ' ' + name;
+    if (offering > 0) {
+        reference = reference + ' o:' + offering;
+    }
+    if (missions > 0) {
+        reference = reference + ' m:' + missions;
+    }
+    if (building > 0) {
+        reference = reference + ' b:' + building;
+    }
+    if (tithe > 0) {
+        reference = reference + ' t:' + tithe;
+    }
 
     const payNowString = new PaynowQR({
         uen:'T12SS0103L',           //Required: UEN of company
@@ -45,7 +57,7 @@ const generateQRCode = (url) => {
 const createSaveBtn = (saveUrl) => {
     const link = document.createElement('a');
     link.id = 'save-link';
-    alert(saveUrl);
+    //alert(saveUrl);
     link.classList = 'bg-red-500 hover:bg-red-700  text-white font-bold py-2 rounded w-1/3 m-auto my-5';
     link.href = saveUrl;
     link.download = 'qrcode';
