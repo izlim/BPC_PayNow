@@ -41,7 +41,7 @@ const onGenerateSubmit = (e) => {
         //new QRCode(document.getElementById("qrcode"), payNowString.output());
 
         setTimeout(() => {
-            const saveUrl = qr.querySelector("img[src^='data:image/png;base64']").src;
+            const saveUrl = qr.querySelector("img").src;
             //alert(document.getElementById('qrcode').src);
             createSaveBtn(saveUrl);
         }, 1000);
