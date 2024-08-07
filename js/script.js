@@ -38,11 +38,14 @@ const onGenerateSubmit = (e) => {
     
     setTimeout(() => {
         generateQRCode(payNowString.output());
+        //new QRCode(document.getElementById("qrcode"), payNowString.output());
 
         setTimeout(() => {
-            const saveUrl = qr.querySelector('img').src;
+            const saveUrl = qr.querySelector("img[src^='data:image/png;base64']").src;
+            //alert(document.getElementById('qrcode').src);
             createSaveBtn(saveUrl);
         }, 1000);
+
     }, 50);
 
 }
@@ -58,17 +61,12 @@ const generateQRCode = (url) => {
 const createSaveBtn = (saveUrl) => {
     const link = document.createElement('a');
     link.id = 'save-link';
-    //alert(saveUrl);
+    alert(saveUrl);
     link.classList = 'bg-red-500 hover:bg-red-700  text-white font-bold py-2 rounded w-1/3 m-auto my-5';
     link.href = saveUrl;
     link.download = 'qrcode';
     link.innerHTML = 'Save Image';
     document.getElementById('generated').appendChild(link);
-    //var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    //if (isMobile) {
-    //link.click();
-    //document.getElementById('generated').removeChild(link);
-    //}
 };
 
 const clearUI = () => {
