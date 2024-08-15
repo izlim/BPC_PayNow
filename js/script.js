@@ -13,7 +13,7 @@ const onGenerateSubmit = (e) => {
     const tithe = document.getElementById('tithe').value;
     var radios = document.getElementsByName("svc");
     var service = Array.from(radios).find(radio => radio.checked).value;  
-    const sum = 0;
+    let sum = 0;
     let reference = service + ' ' + name;
 
     if (offering > 0) {
