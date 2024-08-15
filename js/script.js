@@ -7,10 +7,10 @@ const onGenerateSubmit = (e) => {
     clearUI();
 
     const name = document.getElementById('name').value;
-    const offering = document.getElementById('offering').value;
-    const missions = document.getElementById('missions').value;
-    const building = document.getElementById('building').value;
-    const tithe = document.getElementById('tithe').value;
+    let offering = document.getElementById('offering').value;
+    let missions = document.getElementById('missions').value;
+    let building = document.getElementById('building').value;
+    let tithe = document.getElementById('tithe').value;
     var radios = document.getElementsByName("svc");
     var service = Array.from(radios).find(radio => radio.checked).value;  
     let sum = 0;
@@ -18,24 +18,24 @@ const onGenerateSubmit = (e) => {
 
     if (offering > 0) {
         reference += (' o:' + offering);
-        sum += (parseFloat(offering)).toFixed(2);
+        sum += parseFloat(offering);
     }
     if (missions > 0) {
         reference = reference + ' m:' + missions;
-        sum += (parseFloat(missions)).toFixed(2);
+        sum += parseFloat(missions);
     }
     if (building > 0) {
         reference = reference + ' b:' + building;
-        sum += (parseFloat(building)).toFixed(2);
+        sum += parseFloat(building);
     }
     if (tithe > 0) {
         reference = reference + ' t:' + tithe;
-        sum += (parseFloat(tithe)).toFixed(2);
+        sum += parseFloat(tithe);
     }
 
     const payNowString = new PaynowQR({
         uen:'T12SS0103L',           //Required: UEN of company
-        amount : sum,               //Specify amount of money to pay.
+        amount : sum.toFixed(2),               //Specify amount of money to pay.
         editable: false,             //Whether or not to allow editing of payment amount. Defaults to false if amount is specified
         refNumber: reference,   //Reference number for Paynow Transaction. Useful if you need to track payments for recouncilation.              
       });
