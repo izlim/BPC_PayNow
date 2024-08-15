@@ -13,20 +13,24 @@ const onGenerateSubmit = (e) => {
     const tithe = document.getElementById('tithe').value;
     var radios = document.getElementsByName("svc");
     var service = Array.from(radios).find(radio => radio.checked).value;  
-    const sum = (parseFloat(offering) + parseFloat(missions) + parseFloat(building) + parseFloat(tithe)).toFixed(2);
+    const sum = 0;
     let reference = service + ' ' + name;
 
     if (offering > 0) {
         reference += (' o:' + offering);
+        sum += (parseFloat(offering)).toFixed(2);
     }
     if (missions > 0) {
         reference = reference + ' m:' + missions;
+        sum += (parseFloat(missions)).toFixed(2);
     }
     if (building > 0) {
         reference = reference + ' b:' + building;
+        sum += (parseFloat(building)).toFixed(2);
     }
     if (tithe > 0) {
         reference = reference + ' t:' + tithe;
+        sum += (parseFloat(tithe)).toFixed(2);
     }
 
     const payNowString = new PaynowQR({
